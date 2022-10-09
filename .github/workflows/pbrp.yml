@@ -15,8 +15,8 @@ on:
 
 env:
   MANIFEST: https://github.com/PitchBlackTWRP/manifest_pb.git -b android-12.1
-  DEVICE: m10lte
-  DT_Link https://github.com/mohammad92/android_device_samsung_p3s
+  DEVICE: p3s
+  DT_Link: https://github.com/mohammad92/android_device_samsung_p3s
   DT_PATH: device/samsung/p3s
   TARGET: recoveryimage
   OT: twrp_
