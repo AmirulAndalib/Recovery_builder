@@ -11,7 +11,7 @@ env:
   # (required) device codename i.e: sweet mojito.. 
   DEVICE: p3s
   # (required) device tree link with branch 
-  DT_LINK: https://github.com/Hasajapathirana/android_device_samsung_p3s
+  DT_LINK: https://github.com/Hasajapathirana/android_device_samsung_p3s-for-shrp
   # (required) who made your phone ? 
   MANUFACTURER: samsung
   # (required) recovery partiton = recovery, else (no recovery partition): boot 
