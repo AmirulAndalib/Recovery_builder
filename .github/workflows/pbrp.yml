@@ -14,13 +14,25 @@ on:
   workflow_dispatch:
 
 env:
-  MANIFEST: https://github.com/PitchBlackTWRP/manifest_pb.git -b android-12.1
+  # (required) shrp manifest 
+  MANIFEST: https://github.com/PitchBlackTWRP/manifest_pb.git
+  # (required) manifest branch 
+  BRANCH: v3_11.0
+  # (required) device codename i.e: sweet mojito.. 
   DEVICE: p3s
-  DT_Link: https://github.com/Hasajapathirana/android_device_samsung_p3s-1
-  DT_PATH: device/samsung/p3s
-  TARGET: recoveryimage
+  # (required) device tree link with branch 
+  DT_LINK: https://github.com/Hasajapathirana/android_device_samsung_p3s-1
+  # (required) who made your phone ? 
+  MANUFACTURER: samsung
+  # (required) recovery partiton = recovery, else (no recovery partition): boot 
+  TARGET: recovery
+  # dont change that
+  IMAGE: image
+  # (required) depend of device tree if you see twrp_"codename".mk use twrp
+  # else (omni_"codename".mk): omni
   OT: twrp
-  TZ: Europe/London
+  # dont change that
+  SYM: _
 
 jobs:
   build:
