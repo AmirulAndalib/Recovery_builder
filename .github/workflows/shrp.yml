@@ -60,4 +60,4 @@ jobs:
          with:
             name: recovery.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/shrp.zip
-            retention-days: 5
+            retention-days: 31
