@@ -16,10 +16,11 @@ on:
 env:
   MANIFEST: https://github.com/PitchBlackTWRP/manifest_pb.git -b android-12.1
   DEVICE: p3s
-  DT_LINK: https://github.com/Hasajapathirana/android_device_samsung_p3s
+  DT_LINK: https://github.com/Hasajapathirana/android_device_samsung_p3s-1
   DT_PATH: device/samsung/p3s
   TARGET: recoveryimage
-  OT: omni_
+  OT: twrp
+  _
   TZ: Europe/London
 
 jobs:
