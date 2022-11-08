@@ -19,8 +19,8 @@ env:
   DT_LINK: https://github.com/Hasajapathirana/android_device_samsung_p3s-1
   DT_PATH: device/samsung/p3s
   TARGET: recoveryimage
-  OT: twrp
-  _
+  OT: twrp_
+  
   TZ: Europe/London
 
 jobs:
