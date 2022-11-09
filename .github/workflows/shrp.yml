@@ -7,7 +7,7 @@ env:
   # (required) shrp manifest 
   MANIFEST: https://github.com/SHRP/manifest.git
   # (required) manifest branch 
-  BRANCH:  v3_11.0
+  BRANCH: v3_11.0
   # (required) device codename i.e: sweet mojito.. 
   DEVICE: p3s
   # (required) device tree link with branch 
@@ -50,12 +50,13 @@ jobs:
              git clone $DT_LINK --depth=1 --single-branch device/$MANUFACTURER/$DEVICE          
              
        - name: Build twrp
-                 run: |
-                     cd work
-                     . build/envsetup.sh && lunch $OT$SYM$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET$IMAGE -j60
-                     zip shrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*_stable-Unofficial_*
+         run: |
+              cd work
+              . build/envsetup.sh && lunch $OT$SYM$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET$IMAGE -j60
+              zip shrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*_stable-Unofficial_*
+       - name: Save in artifact
          uses: actions/upload-artifact@v3
          with:
             name: recovery.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/shrp.zip
-            retention-days: 31
+            retention-days: 5
