@@ -55,8 +55,8 @@ jobs:
               . build/envsetup.sh && lunch $OT$SYM$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET$IMAGE -j60
               cd /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s
               ls
-              zip shrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/devic
-            e
+              zip shrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/device
+            
       
        - name: Save in artifact
          uses: actions/upload-artifact@v3
