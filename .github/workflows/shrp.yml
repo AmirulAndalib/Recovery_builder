@@ -67,7 +67,7 @@ jobs:
             name: recovery@tar.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/shrp@tar.zip
             retention-days: 5
-             - name: Addon upload
+       - name: Addon upload
          run: |
              zip shrp@addon.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*_Addon_*
             
