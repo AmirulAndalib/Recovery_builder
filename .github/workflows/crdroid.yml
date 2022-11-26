@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
 
 env:
-  MANIFEST: https://github.com/LineageOS/android.git -b lineage-15.1
+  MANIFEST: https://github.com/crdroidandroid/android -b 7.1
   DEVICE: goyave
-  DT_LINK: https://github.com/pstglia/local_manifests/tree/lineage-15.1
+  DT_LINK: https://github.com/pstglia/local_manifests
   DT_PATH: device/samsung/goyave
   TZ: Europe/London
 
@@ -32,7 +32,9 @@ jobs:
        - name: Initializing environment
          run: |
              git clone https://github.com/SA-17/rm_pkg p && cd p && bash setup.sh
-
+             sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
+             sudo chmod a+rx /usr/local/bin/repo
+            
             
        - name: Sync recovery source and device tree
          run: |
