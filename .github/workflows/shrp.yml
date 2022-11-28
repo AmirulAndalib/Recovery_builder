@@ -59,18 +59,8 @@ jobs:
          with:
             name: recovery.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/shrp.zip
-            retention-days: 5
+            retention-days: 30
 
-       - name: Build twrp
-         run: |
-              cd work
-              zip shrp@tar.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/recovery.img.tar
-       - name: Save in artifact
-         uses: actions/upload-artifact@v3
-         with:
-            name: recovery@tar.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/shrp@tar.zip
-            retention-days: 5
        - name: Addon upload
          run: |
              zip shrp@addon.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*_Addon_*
@@ -81,3 +71,17 @@ jobs:
             name: recovery@addon.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/shrp@addon.zip
             retention-days: 5
+
+
+       - name: Upload tar
+         run: |
+              cd work
+              zip shrp@tar.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/recovery.img.tar
+       - name: Save in artifact
+         uses: actions/upload-artifact@v3
+         with:
+            name: recovery.tar.zip
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/shrp@tar.zip
+            retention-days: 5
+
+            
