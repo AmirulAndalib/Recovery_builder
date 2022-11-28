@@ -49,11 +49,11 @@ jobs:
              repo sync -c -j700 --force-sync --no-clone-bundle --no-tags
              git clone $DT_LINK --depth=1 --single-branch device/$MANUFACTURER/$DEVICE          
              
-       - name: Build twrp
+       - name: Build shrp
          run: | 
               cd work
               . build/envsetup.sh && lunch $OT$SYM$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET$IMAGE -j60  
-              zip shrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*_stable-Unofficial_*
+              zip shrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*_Beta-Unofficial_*
               ls
        - name: Save in artifact
          uses: actions/upload-artifact@v3
@@ -77,7 +77,7 @@ jobs:
        - name: Upload tar
          run: |
               cd work
-              zip shrp@tar.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/recovery.img.tar
+              zip shrp@tar.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/recovery.tar
        - name: Save in artifact
          uses: actions/upload-artifact@v3
          with:
