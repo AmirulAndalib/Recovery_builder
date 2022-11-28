@@ -37,9 +37,9 @@ jobs:
             
             
        - name: Sync recovery source and device tree
-         run:|
-             mkdir evolution
-             cd evolution
-             git clone https://github.com/ponces/treble_build_evo -b tiramisu
-             bash treble_build_evo/build.sh
-             ls
+         run: |
+              mkdir evolution
+              cd evolution
+              git clone https://github.com/ponces/treble_build_evo -b tiramisu
+              bash treble_build_evo/build.sh
+              ls
