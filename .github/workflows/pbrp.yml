@@ -36,7 +36,7 @@ jobs:
          run: |
             sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
             docker rmi `docker images -q`
-            git clone https://github.com/SA-17/rm_pkg pkg && cd pkg && bash setup.sh
+            wget -qO - https://github.com/SA-17/Recovery_builder/raw/main/scripts/cleanup.sh  | bash
             git config --global user.name "Ayush"
             git config --global user.email "ayush@disroot.org"         
             sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php* 
