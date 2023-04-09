@@ -25,7 +25,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
        - name: Checkout
@@ -35,6 +35,7 @@ jobs:
        - name: Initializing environment
          run: |
             docker rmi `docker images -q`
+            git clone https://github.com/SA-17/rm_pkg pkg && cd pkg && bash setup.sh
             git config --global user.email "ayush@disroot.org"         
             sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php* 
             sudo -E apt-get clean
