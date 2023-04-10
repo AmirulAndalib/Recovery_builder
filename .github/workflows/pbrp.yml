@@ -66,6 +66,15 @@ jobs:
        - name: Save2
          uses: actions/upload-artifact@v3
          with:
-            name: recovery.zip
-            path: /home/runner/work/Recovery-builder/Recovery-builder/work/out/target/product/p3s/recovery.img
+            name: recovery1.zip
+            path: /home/runner/work/Recovery-builder/Recovery-builder/pbrp.zip
             retention-days: 5
+
+       - name: Save3
+         uses: actions/upload-artifact@v3
+         with:
+            name: recovery3.zip
+            path: /home/runner/work/Recovery-builder/Recovery-builder/pbrp.zip
+            retention-days: 5
+
+       
