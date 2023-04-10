@@ -60,7 +60,7 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
             name: recovery.zip
-            path: /home/runner/work/Recovery-builder/Recovery-builder/work/pbrp.zip
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/recovery.img
             retention-days: 5
 
        - name: Save2
