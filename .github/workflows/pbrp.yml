@@ -63,7 +63,4 @@ jobs:
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/pbrp.zip
             retention-days: 5
 
-       - name: check
-         run: |
-              cd /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/recovery.img
-              ls
+
