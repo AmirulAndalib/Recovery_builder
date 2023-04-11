@@ -60,21 +60,10 @@ jobs:
          uses: actions/upload-artifact@v3
          with:
             name: recovery.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/recovery.img
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/pbrp.zip
             retention-days: 5
 
-       - name: Save2
-         uses: actions/upload-artifact@v3
-         with:
-            name: recovery1.zip
-            path: /home/runner/work/Recovery-builder/Recovery-builder/pbrp.zip
-            retention-days: 5
-
-       - name: Save3
-         uses: actions/upload-artifact@v3
-         with:
-            name: recovery3.zip
-            path: /home/runner/work/Recovery-builder/Recovery-builder/pbrp.zip
-            retention-days: 5
-
-       
+       - name: check
+         run: |
+              cd /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/recovery.img
+              ls
