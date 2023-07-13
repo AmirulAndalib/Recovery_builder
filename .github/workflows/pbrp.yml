@@ -29,7 +29,7 @@ jobs:
 
     steps:
        - name: Checkout
-         uses: actions/checkout@master
+         uses: actions/checkout@master@v3
          
 
        - name: remove pkg and setting repo
