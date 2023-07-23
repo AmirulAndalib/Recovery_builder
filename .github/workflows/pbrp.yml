@@ -25,11 +25,11 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-20.04
 
     steps:
        - name: Checkout
-         uses: actions/checkout@v3
+         uses: actions/checkout@v2
          
 
        - name: remove pkg and setting repo
@@ -59,7 +59,7 @@ jobs:
               ls
 
        - name: Save
-         uses: actions/upload-artifact@v3
+         uses: actions/upload-artifact@v2
          with:
             name: recovery.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/pbrp.zip
