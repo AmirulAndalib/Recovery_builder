@@ -39,10 +39,9 @@ jobs:
             cd .. && sudo -E apt-get -qq update
             sudo -E apt-get -qq install bc build-essential tar zip curl libstdc++6 git wget python3 gcc clang libssl-dev rsync flex curl  bison aria2
             sudo apt update
-            mkdir /home/runner/bin/
-            curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-            chmod a+x ~/bin/repo
-            sudo apt-get install repo
+            mkdir -p ~/.bin
+            curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
+            chmod a+rx ~/.bin/repo
   
        - name: Sync recovery source and device tree
          run: |
