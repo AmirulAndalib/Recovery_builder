@@ -42,6 +42,8 @@ jobs:
             mkdir -p ~/.bin
             curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
             chmod a+rx ~/.bin/repo
+            sudo apt update
+            sudo apt install gnupg python
   
        - name: Sync recovery source and device tree
          run: |
