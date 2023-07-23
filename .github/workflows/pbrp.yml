@@ -44,6 +44,7 @@ jobs:
             chmod a+rx ~/.bin/repo
             sudo apt update
             sudo apt install gnupg python
+            sudo apt install repo init
   
        - name: Sync recovery source and device tree
          run: |
