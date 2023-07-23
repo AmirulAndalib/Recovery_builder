@@ -42,6 +42,7 @@ jobs:
             mkdir /home/runner/bin/
             curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
             chmod a+x ~/bin/repo
+            sudo apt-get install repo
   
        - name: Sync recovery source and device tree
          run: |
