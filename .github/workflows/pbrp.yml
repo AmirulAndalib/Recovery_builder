@@ -46,14 +46,14 @@ jobs:
              mkdir work
              cd work
              repo init -u $MANIFEST --depth=1
-             repo sync -c -j800 --force-sync --no-clone-bundle --no-tags
+             repo sync -c -j900 --force-sync --no-clone-bundle --no-tags
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
              
              
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh && lunch $OT$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka pbrp -j88
+              . build/envsetup.sh && lunch $OT$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka pbrp -j95
               sudo apt install zip
               zip pbrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*UNOFFICIAL*
               cd /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/
