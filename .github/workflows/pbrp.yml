@@ -25,7 +25,8 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04 
+    runs-on: ubuntu-18.04
+    
 
     steps:
        - name: Checkout
@@ -40,7 +41,7 @@ jobs:
             sudo -E apt-get -qq install bc build-essential tar zip curl libstdc++6 git wget python3 gcc clang libssl-dev rsync flex curl  bison aria2
             sudo apt update
             sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
-            sudo chmod a+rx /usr/local
+            sudo chmod a+rx /usr/local/bin/repo
             sudo apt install zip
   
        - name: Sync recovery source and device tree
