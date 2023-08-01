@@ -29,7 +29,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
        - name: Checkout
@@ -63,4 +63,13 @@ jobs:
          with:
             name: recovery.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/twrp.zip
-            retention-days: 5
+            retention-days: 90
+            
+        - name: Release recovery
+         uses: softprops/action-gh-release@v1
+         env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         with:
+         tag_name: ${{ github.run_id }}
+         name: recovery image
+         files: home/runner/work/Recovery_builder/Recovery_builder/work/twrp.zip
