@@ -59,7 +59,7 @@ jobs:
          run: |
               cd work
               . build/envsetup.sh && lunch $OT$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka pbrp -j60
-              cd /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/
+              cd /out/target/product/$DEVICE/
               ls 
        - name: Save
          uses: actions/upload-artifact@v2
