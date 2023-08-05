@@ -59,12 +59,14 @@ jobs:
          run: |
               cd work
               . build/envsetup.sh && lunch $OT$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka pbrp -j60
+              zip pbrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*UNOFFICIAL*
               ls
+              
        - name: Save
          uses: actions/upload-artifact@v2
          with:
             name: recovery.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*UNOFFICIAL*.zip
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*UNOFFICIAL*
             retention-days: 31
           
        - name: Release recovery
@@ -74,6 +76,6 @@ jobs:
          with:
           tag_name: ${{ github.run_id }}
           name:  pbrp recovery 
-          files: /home/runner/work/Recovery-builder/Recovery-builder/work/out/target/product/p3s/*UNOFFICIAL*.zip
+          files: /home/runner/work/Recovery-builder/Recovery-builder/work/out/target/product/p3s/*UNOFFICIAL*
 
 
