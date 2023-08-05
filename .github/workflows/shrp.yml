@@ -69,7 +69,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
           tag_name: ${{ github.run_id }}
-          name:  shrp recovery (UNOFFICIAL)
+          name:  SkyHawk Recovery Unofficial (p3s)
           files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*_Stable-Unofficial_*
 
 
