@@ -63,6 +63,15 @@ jobs:
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/shrp.zip
             retention-days: 30
 
+       - name: Release recovery
+         uses: softprops/action-gh-release@v1
+         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         with:
+          tag_name: ${{ github.run_id }}
+          name:  shrp recovery (UNOFFICIAL)
+          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*_Stable-Unofficial_*
+
 
        
             
