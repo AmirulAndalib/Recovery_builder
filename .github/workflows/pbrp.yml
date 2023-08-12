@@ -75,7 +75,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
           tag_name: ${{ github.run_id }}
-          name:  pbrp recovery 
+          name:  PBRP Recovery For p3s (Unofficial) 
           files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*UNOFFICIAL*
 
 
