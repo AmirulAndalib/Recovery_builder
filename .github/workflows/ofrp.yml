@@ -54,7 +54,7 @@ jobs:
              cd work
              git clone https://gitlab.com/OrangeFox/sync.git
              cd sync
-             ./orangefox_sync.sh --branch 12.1 --path ~/fox_12.1
+             ./orangefox_sync.sh --branch 12.1 --path /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/
              ls
              
        - name: Build
