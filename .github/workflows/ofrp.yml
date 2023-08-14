@@ -59,18 +59,22 @@ jobs:
              
        - name: Build
          run: |
-              cd work
-              cd sync 
               cd fox_12.1
-              
-              zip pbrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*UNOFFICIAL*
+              git clone https://gitlab.com/OrangeFox/misc/theme.git bootable/recovery/gui/theme
+              git clone $DT_LINK /device/samsung/p3s
+              source build/envsetup.sh
+              lunch twrp_p3s-eng
+              mka recoveryimage
+              cd /out/target/product/p3s/
               ls
+            
+            
               
        - name: Save
          uses: actions/upload-artifact@v2
          with:
             name: recovery.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*UNOFFICIAL*
+            path: /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/out/target/product/p3s/*recovery*
             retention-days: 31
           
        - name: Release recovery
@@ -79,5 +83,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
           tag_name: ${{ github.run_id }}
-          name:  PBRP Recovery For p3s (Unofficial) 
-          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*UNOFFICIAL*
+          name:  OrangeFox Recovery For p3s (Unofficial) 
+          files: /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/out/target/product/p3s/*recovery*
+          retention-days: 31
