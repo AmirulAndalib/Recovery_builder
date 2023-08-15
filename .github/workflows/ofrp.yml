@@ -60,7 +60,6 @@ jobs:
        - name: Build
          run: |
               cd fox_12.1
-              git clone https://gitlab.com/OrangeFox/misc/theme.git bootable/recovery/gui/theme
               git clone $DT_LINK /device/samsung/p3s
               source build/envsetup.sh
               lunch twrp_p3s-eng
