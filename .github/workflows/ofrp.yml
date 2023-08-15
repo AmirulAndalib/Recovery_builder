@@ -60,6 +60,7 @@ jobs:
        - name: Build
          run: |
               cd fox_12.1
+              sudo su
               git clone $DT_LINK /device/samsung/p3s
               source build/envsetup.sh
               lunch twrp_p3s-eng
