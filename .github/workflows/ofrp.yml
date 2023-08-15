@@ -61,7 +61,7 @@ jobs:
          run: |
               cd fox_12.1
               sudo su
-              git clone $DT_LINK $DT_PATH
+              git clone $DT_LINK $DT_PATH --depth=1
               source build/envsetup.sh
               lunch twrp_p3s-eng
               mka recoveryimage
