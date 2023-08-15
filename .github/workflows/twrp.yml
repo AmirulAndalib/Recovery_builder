@@ -65,10 +65,10 @@ jobs:
             retention-days: 90
             
        - name: Release recovery
-          uses: softprops/action-gh-release@v1
-          env:
+         uses: softprops/action-gh-release@v1
+         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
+         with:
           tag_name: ${{ github.run_id }}
           name: recovery image
           files: home/runner/work/Recovery_builder/Recovery_builder/work/twrp.zip
