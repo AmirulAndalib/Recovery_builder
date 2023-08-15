@@ -56,8 +56,7 @@ jobs:
              cd sync
              ./orangefox_sync.sh --branch 12.1 --path /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/
              ls
-             cd $out
-             cd fox_12.1
+             cd /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
              
              
