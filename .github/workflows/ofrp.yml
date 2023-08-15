@@ -56,12 +56,15 @@ jobs:
              cd sync
              ./orangefox_sync.sh --branch 12.1 --path /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/
              ls
+             cd $out
+             cd fox_12.1
+             git clone $DT_LINK --depth=1 --single-branch $DT_PATH
+             
              
        - name: Build
          run: |
               cd fox_12.1
               sudo su
-              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
               source build/envsetup.sh
               lunch twrp_p3s-eng
               mka recoveryimage
@@ -85,4 +88,4 @@ jobs:
           tag_name: ${{ github.run_id }}
           name:  OrangeFox Recovery For p3s (Unofficial) 
           files: /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/out/target/product/p3s/*recovery*
-          retention-days: 31
+          retention-days: 90
