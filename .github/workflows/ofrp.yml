@@ -63,7 +63,8 @@ jobs:
              
        - name: Build
          run: |
-              cd /work/fox_12.1/
+              cd work
+              cd fox_12.1 
               source build/envsetup.sh
               lunch twrp_p3s-eng
               mka recoveryimage -j16
