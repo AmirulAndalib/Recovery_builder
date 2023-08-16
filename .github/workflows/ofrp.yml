@@ -55,9 +55,9 @@ jobs:
              mkdir fox_12.1
              git clone https://gitlab.com/OrangeFox/sync.git
              cd sync
-             ./orangefox_sync.sh --branch 12.1 --path /home/runner/work/Recovery_builder/Recovery_builder/work/fox_12.1/
+             ./orangefox_sync.sh --branch 12.1 --path ~/fox_12.1
              ls
-             cd /home/runner/work/Recovery_builder/Recovery_builder/work/fox_12.1/
+             cd ~/fox_12.1 
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
              source build/envsetup.sh
              lunch twrp_p3s-eng
@@ -71,7 +71,7 @@ jobs:
          uses: actions/upload-artifact@v2
          with:
             name: recovery.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/fox_12.1/out/target/product/p3s/*recovery*
+            path: /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/out/target/product/p3s/*recovery*
             retention-days: 90
           
        - name: Release recovery 
@@ -81,5 +81,5 @@ jobs:
          with:
           tag_name: ${{ github.run_id }}
           name:  OrangeFox Recovery For p3s (Unofficial) 
-          files: /home/runner/work/Recovery_builder/Recovery_builder/work/fox_12.1/out/target/product/p3s/*recovery*
+          files: /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/out/target/product/p3s/*recovery*
           retention-days: 90
