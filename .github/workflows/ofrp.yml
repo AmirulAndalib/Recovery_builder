@@ -66,7 +66,7 @@ jobs:
               sudo su
               source build/envsetup.sh
               lunch twrp_p3s-eng
-              mka recoveryimage
+              mka recoveryimage -j16
               cd /out/target/product/p3s/
               ls
             
@@ -77,7 +77,7 @@ jobs:
          with:
             name: recovery.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/out/target/product/p3s/*recovery*
-            retention-days: 31
+            retention-days: 90
           
        - name: Release recovery
          uses: softprops/action-gh-release@v1
