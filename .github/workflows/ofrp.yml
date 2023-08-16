@@ -48,7 +48,7 @@ jobs:
             sudo bash setup/android_build_env.sh
             
   
-       - name: Sync recovery source and device tree
+       - name: Sync recovery,device tree and build
          run: |
              mkdir work
              cd work
@@ -59,28 +59,22 @@ jobs:
              ls
              cd /home/runner/work/Recovery_builder/Recovery_builder/work/fox_12.1/
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
-             
-             
-       - name: Build
-         run: |
-              cd work
-              cd fox_12.1 
-              source build/envsetup.sh
-              lunch twrp_p3s-eng
-              mka recoveryimage -j16
-              cd /out/target/product/p3s/
-              ls
+             source build/envsetup.sh
+             lunch twrp_p3s-eng
+             mka recoveryimage -j16
+             cd /out/target/product/p3s/
+             ls
             
             
               
-       - name: Save
+       - name: Upload 
          uses: actions/upload-artifact@v2
          with:
             name: recovery.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/fox_12.1/out/target/product/p3s/*recovery*
             retention-days: 90
           
-       - name: Release recovery
+       - name: Release recovery 
          uses: softprops/action-gh-release@v1
          env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
