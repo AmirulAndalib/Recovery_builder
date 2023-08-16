@@ -63,7 +63,8 @@ jobs:
              
        - name: Build
          run: |
-              cd /home/runner/work/Recovery_builder/Recovery_builder/work/fox_12.1/
+              cd work
+              cd fox_12.1 
               sudo su
               source build/envsetup.sh
               lunch twrp_p3s-eng
