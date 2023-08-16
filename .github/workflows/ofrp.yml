@@ -54,7 +54,7 @@ jobs:
              cd work
              git clone https://gitlab.com/OrangeFox/sync.git
              cd sync
-             ./orangefox_sync.sh --branch 12.1 --path /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/
+             ./orangefox_sync.sh --branch 12.1 --path /home/runner/work/Recovery_builder/Recovery_builder/sync/fox_12.1/
              ls
              cd /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
@@ -62,7 +62,7 @@ jobs:
              
        - name: Build
          run: |
-              cd /home/runner/work/Recovery_builder/Recovery_builder/fox_12.1/
+              cd /home/runner/work/Recovery_builder/Recovery_builder/sync/fox_12.1/
               sudo su
               source build/envsetup.sh
               lunch twrp_p3s-eng
