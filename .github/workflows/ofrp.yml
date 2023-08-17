@@ -59,12 +59,7 @@ jobs:
              ls
              cd ~/fox_12.1 
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
-             source build/envsetup.sh
-             lunch twrp_p3s-eng
-             mka recoveryimage -j16
-             cd /out/target/product/p3s/
-             ls
-            
+             . build/envsetup.sh && lunch twrp_p3s-eng && export ALLOW_MISSING_DEPENDENCIES=true && make recoveyimage
             
               
        - name: Upload 
