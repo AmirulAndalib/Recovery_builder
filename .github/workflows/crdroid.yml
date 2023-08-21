@@ -40,7 +40,7 @@ jobs:
          run: |
               mkdir work
               cd work
-              git clone $DT_LINK--single-branch $DT_PATH --depth=1
+              git clone $DT_LINK --single-branch $DT_PATH --depth=1
               repo init https://github.com/crdroidandroid/android -b 13.0 --depth=1
               repo sync -c -j700 --force-sync --no-clone-bundle --no-tags
               git clone $DT_LINK --depth=1 --single-branch $DT_PATH
