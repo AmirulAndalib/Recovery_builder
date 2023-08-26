@@ -43,7 +43,7 @@ jobs:
               git clone $DT_LINK --single-branch $DT_PATH --depth=1
               repo init -u https://github.com/Halium/android -b halium-7.1 --depth=1
               repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
-              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
+              cd device/samsung/core33g
               ls
 
        - name: Build
