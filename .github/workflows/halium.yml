@@ -1,4 +1,4 @@
-name: Building crdroid
+name: Building halium
 
 on:
 #  release:
@@ -15,9 +15,9 @@ on:
 
 env:
   MANIFEST: https://github.com/crdroidandroid/android -b 13.0
-  DEVICE: p3s
-  DT_LINK: https://github.com/Exy2100-LOS/android_device_samsung_p3s
-  DT_PATH: device/samsung/p3s
+  DEVICE: core33g
+  DT_LINK: https://github.com/pstglia/android_device_samsung_core33g.git
+  DT_PATH: device/samsung/core33g
   TZ: Europe/London
 
 jobs:
@@ -41,23 +41,23 @@ jobs:
               mkdir work
               cd work
               git clone $DT_LINK --single-branch $DT_PATH --depth=1
-              repo init https://github.com/crdroidandroid/android -b 13.0 --depth=1
-              repo sync -c -j700 --force-sync --no-clone-bundle --no-tags
+              repo init -u https://github.com/Halium/android -b halium-7.1 --depth=1
+              repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
               git clone $DT_LINK --depth=1 --single-branch $DT_PATH
               ls
 
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh && lunch lineage_p3s && mka p3s -j16
-              zip crdroid.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*zip*
+              . build/envsetup.sh && breakfast core33g && mka systemimg
+              zip crdroid.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*img*
               ls
               
        - name: Save
          uses: actions/upload-artifact@v2
          with:
             name: recovery.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*zip*
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/core33g/*img*
             retention-days: 31
           
        - name: Release recovery
@@ -66,8 +66,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
           tag_name: ${{ github.run_id }}
-          name:  crdroid For p3s (Unofficial) 
-          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*zip*
+          name:  halium For core33g (system.img) boot.img will be released later (Unofficial) 
+          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/core33g/*img*
 
 
 
