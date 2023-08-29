@@ -77,6 +77,8 @@ jobs:
          with:
           tag_name: ${{ github.run_id }}
           name:  PBRP Recovery For p3s (Unofficial) 
-          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*UNOFFICIAL*
+          files: |
+           /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*UNOFFICIAL*
+           /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*tar*
 
 
