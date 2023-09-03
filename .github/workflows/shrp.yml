@@ -9,9 +9,9 @@ env:
   # (required) manifest branch 
   BRANCH: shrp-12.1
   # (required) device codename i.e: sweet mojito.. 
-  DEVICE: p3s
+  DEVICE: o1s
   # (required) device tree link with branch 
-  DT_LINK: https://github.com/Hasajapathirana/android_device_samsung_p3s-1
+  DT_LINK: https://github.com/mohammad92/android_device_samsung_o1s
   # (required) who made your phone ? 
   MANUFACTURER: samsung
   # (required) recovery partiton = recovery, else (no recovery partition): boot 
@@ -69,8 +69,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
           tag_name: ${{ github.run_id }}
-          name:  SkyHawk Recovery Unofficial (p3s)
-          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*_Stable-Unofficial_*
+          name:  SkyHawk Recovery Unofficial (o1s)
+          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/o1s/*_Stable-Unofficial_*
 
 
        
