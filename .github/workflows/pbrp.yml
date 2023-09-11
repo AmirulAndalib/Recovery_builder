@@ -44,7 +44,6 @@ jobs:
             sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
             sudo chmod a+rx /usr/local/bin/repo
             sudo apt install zip
-            sudo apt install toilet
   
        - name: Sync recovery source and device tree
          run: |
@@ -75,10 +74,8 @@ jobs:
               cd vb
               curl https://dl.google.com/developers/android/qt/images/gsi/vbmeta.img?hl=es-419 --output vbmeta.img
               tar -cvf recovery.img.tar recveory.img vbmeta.img
-              toilet finished
+          
               
-              
-
               
        - name: Save
          uses: actions/upload-artifact@v2
