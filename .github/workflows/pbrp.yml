@@ -44,10 +44,12 @@ jobs:
             sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleapis.com/git-repo-downloads/repo
             sudo chmod a+rx /usr/local/bin/repo
             sudo apt install zip
+            sudo apt install toilet
   
        - name: Sync recovery source and device tree
          run: |
              mkdir work
+             mkdir vb
              cd work
              sudo su
              repo init -u $MANIFEST --depth=1
@@ -61,6 +63,22 @@ jobs:
               . build/envsetup.sh && lunch $OT$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka pbrp -j60
               zip pbrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*UNOFFICIAL*
               ls
+              cd out
+              cd target
+              cd product
+              cd $DEVICE
+              cp recovery.img /home/runner/work/Recovery_builder/Recovery_builder/vb/
+              
+
+       - name: Add vbmeta.img to tar file
+         run: |
+              cd vb
+              curl https://dl.google.com/developers/android/qt/images/gsi/vbmeta.img?hl=es-419 --output vbmeta.img
+              tar -cvf recovery.img.tar recveory.img vbmeta.img
+              toilet finished
+              
+              
+
               
        - name: Save
          uses: actions/upload-artifact@v2
@@ -78,6 +96,7 @@ jobs:
           name:  PBRP Recovery For p3s (Unofficial) 
           files: |
            /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*UNOFFICIAL*
-           /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*tar*
+           /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3s/*img*
+           /home/runner/work/Recovery_builder/Recovery_builder/vb/recovery.img.tar
 
 
