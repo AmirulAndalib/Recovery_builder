@@ -41,6 +41,7 @@ jobs:
               mkdir work
               cd work
               git clone $DT_LINK --single-branch $DT_PATH --depth=1
+              git clone https://github.com/pstglia/android_device_samsung_scx35-common.git device/samsung/android_device_samsung_scx35-common
               repo init -u https://github.com/Halium/android -b halium-7.1 --depth=1
               repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
               cd device/samsung/core33g
