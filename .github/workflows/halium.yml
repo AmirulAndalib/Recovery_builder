@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  MANIFEST: https://github.com/crdroidandroid/android -b 7.1
+  MANIFEST: https://github.com/crdroidandroid/android -b 13.1
   DEVICE: universal2100-common
   DT_LINK: https://github.com/Exy2100-LOS/android_device_samsung_universal2100-common.git
   DT_PATH: device/samsung/universal2100-common
@@ -41,8 +41,7 @@ jobs:
               mkdir work
               cd work
               git clone $DT_LINK --single-branch $DT_PATH --depth=1
-              git clone $DT_LINK $DT_PATH
-              repo init -u https://github.com/Halium/android -b halium-13.1 --depth=1
+              repo init -u https://github.com/crdroidandroid/android -b 13.1 --depth=1
               repo sync -c -j5 --force-sync --no-clone-bundle --no-tags
               cd device/samsung/universal2100-common
               ls
