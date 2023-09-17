@@ -15,9 +15,9 @@ on:
 
 env:
   MANIFEST: https://github.com/crdroidandroid/android -b 7.1
-  DEVICE: core33g
-  DT_LINK: https://github.com/pstglia/android_device_samsung_core33g.git
-  DT_PATH: device/samsung/core33g
+  DEVICE: universal2100-common
+  DT_LINK: https://github.com/Exy2100-LOS/android_device_samsung_universal2100-common.git
+  DT_PATH: device/samsung/universal2100-common
   TZ: Europe/London
 
 jobs:
@@ -41,24 +41,24 @@ jobs:
               mkdir work
               cd work
               git clone $DT_LINK --single-branch $DT_PATH --depth=1
-              git clone https://github.com/pstglia/android_device_samsung_scx35-common.git device/samsung/android_device_samsung_scx35-common
-              repo init -u https://github.com/Halium/android -b halium-7.1 --depth=1
-              repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
-              cd device/samsung/core33g
+              git clone $DT_LINK $DT_PATH
+              repo init -u https://github.com/Halium/android -b halium-13.1 --depth=1
+              repo sync -c -j5 --force-sync --no-clone-bundle --no-tags
+              cd device/samsung/universal2100-common
               ls
 
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh && breakfast core33g && make core33g
-              zip crdroid.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*img*
+              . build/envsetup.sh && breakfast $DEVICE && make $DEVICE
+              zip crdroid.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*zip*
               ls
               
        - name: Save
          uses: actions/upload-artifact@v2
          with:
             name: recovery.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/core33g/*img*
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/universal2100-common/*zip*
             retention-days: 31
           
        - name: Release recovery
@@ -67,8 +67,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
           tag_name: ${{ github.run_id }}
-          name:  halium For core33g (system.img) boot.img will be released later (Unofficial) 
-          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/core33g/*img*
+          name:  halium For universal2100-common (Unofficial) 
+          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/universal2100-common/*zip*
 
 
 
