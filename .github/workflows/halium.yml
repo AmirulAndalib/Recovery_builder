@@ -14,10 +14,10 @@ on:
   workflow_dispatch:
 
 env:
-  MANIFEST: https://github.com/crdroidandroid/android -b 13.1
-  DEVICE: universal2100-common
-  DT_LINK: https://github.com/Exy2100-LOS/android_device_samsung_universal2100-common.git
-  DT_PATH: device/samsung/universal2100-common
+  MANIFEST: https://github.com/Halium/android -b halium-7.1 
+  DEVICE: core33g
+  DT_LINK: https://github.com/Hasajapathirana/android_device_samsung_core33g
+  DT_PATH: device/samsung/core33g
   TZ: Europe/London
 
 jobs:
@@ -41,23 +41,23 @@ jobs:
               mkdir work
               cd work
               git clone $DT_LINK --single-branch $DT_PATH --depth=1
-              repo init -u https://github.com/crdroidandroid/android -b 13.1 --depth=1
+              repo init -u https://github.com/Halium/android -b halium-7.1 --depth=1
               repo sync -c -j5 --force-sync --no-clone-bundle --no-tags
-              cd device/samsung/universal2100-common
+              cd device/samsung/core33g
               ls
 
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh && breakfast $DEVICE && make $DEVICE
-              zip crdroid.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*zip*
+              . build/envsetup.sh && breakfast $DEVICE && mka bootimg
+              zip halium.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*img*
               ls
               
        - name: Save
          uses: actions/upload-artifact@v2
          with:
             name: recovery.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/universal2100-common/*zip*
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/core33g/*img*
             retention-days: 31
           
        - name: Release recovery
@@ -66,8 +66,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
           tag_name: ${{ github.run_id }}
-          name:  halium For universal2100-common (Unofficial) 
-          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/universal2100-common/*zip*
+          name:  halium For core33g (Unofficial) 
+          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/core33g/*img*
 
 
 
