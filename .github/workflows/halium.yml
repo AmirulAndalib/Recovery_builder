@@ -42,6 +42,7 @@ jobs:
               cd work
               git clone $DT_LINK --single-branch $DT_PATH --depth=1
               git clone https://github.com/pstglia/android_device_samsung_scx30g-common --single-branch device/samsung/scx30g-common/
+              git clone https://github.com/pstglia/android_device_samsung_scx35g-common --single-branch device/samsung/scx35g-common
               repo init -u https://github.com/Halium/android -b halium-7.1 --depth=1
               repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
               cd device/samsung/core33g
