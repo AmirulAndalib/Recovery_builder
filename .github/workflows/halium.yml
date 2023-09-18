@@ -41,8 +41,9 @@ jobs:
               mkdir work
               cd work
               git clone $DT_LINK --single-branch $DT_PATH --depth=1
+              git clone https://github.com/pstglia/android_device_samsung_scx30g-common --single-branch device/samsung/scx30g-common/
               repo init -u https://github.com/Halium/android -b halium-7.1 --depth=1
-              repo sync -c -j5 --force-sync --no-clone-bundle --no-tags
+              repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
               cd device/samsung/core33g
               ls
 
@@ -66,7 +67,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
           tag_name: ${{ github.run_id }}
-          name:  halium For core33g (Unofficial) 
+          name:  halium For core33g (Unofficial) bootimg test
           files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/core33g/*img*
 
 
