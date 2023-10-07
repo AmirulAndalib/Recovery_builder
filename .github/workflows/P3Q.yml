@@ -51,14 +51,14 @@ jobs:
              cd work
              sudo su
              repo init -u $MANIFEST --depth=1
-             repo sync -c -j500 --force-sync --no-clone-bundle --no-tags
+             repo sync -c -j600 --force-sync --no-clone-bundle --no-tags
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
              
              
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh && lunch $OT$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka pbrp -j40
+              . build/envsetup.sh && lunch $OT$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka pbrp -j60
               zip pbrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*UNOFFICIAL*
               ls
                                       
