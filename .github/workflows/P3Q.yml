@@ -66,7 +66,7 @@ jobs:
          uses: actions/upload-artifact@v2
          with:
             name: recovery.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3q/*UNOFFICIAL*
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3q/*zip*
             retention-days: 31
           
        - name: Release recovery
@@ -77,6 +77,6 @@ jobs:
           tag_name: ${{ github.run_id }}
           name:  PBRP Recovery For p3q [Unofficial] 
           files: |
-           /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3q/*UNOFFICIAL*
+           /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3q/*zip*
            /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3q/*img*
            /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/p3q/*tar*
