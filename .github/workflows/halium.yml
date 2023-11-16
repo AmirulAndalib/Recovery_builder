@@ -41,7 +41,7 @@ jobs:
               mkdir work
               cd work
               repo init -u https://github.com/crdroidandroid/android -b 7.1 --depth=1
-              repo sync -c -j4  --force-sync --no-clone-bundle --no-tags
+              repo sync -c -j4 
               git clone https://github.com/LineageOS/android_external_stlport.git -b cm-14.1 --depth=1 --single-branch external/stlport
               git clone https://github.com/LineageOS/android_packages_apps_SamsungServiceMode.git -b cm-14.1 --depth=1 --single-branch packages/apps/SamsungServiceMode
               git clone https://github.com/pstglia/android_device_samsung_sprd-common.git -b cm-14.1 --depth=1 --single-branch device/samsung/sprd-common
