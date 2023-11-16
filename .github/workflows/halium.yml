@@ -1,4 +1,4 @@
-name: Building halium
+name: Building crdroid
 
 on:
 #  release:
@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  MANIFEST: https://github.com/Halium/android -b halium-7.1 
+  MANIFEST: https://github.com/crdroidandroid/android -b 7.1 
   DEVICE: core33g
   DT_LINK: https://github.com/Hasajapathirana/android_device_samsung_core33g
   DT_PATH: device/samsung/core33g
@@ -40,26 +40,32 @@ jobs:
          run: |
               mkdir work
               cd work
-              git clone $DT_LINK --single-branch $DT_PATH --depth=1
-              git clone https://github.com/pstglia/android_device_samsung_scx30g-common --single-branch device/samsung/scx30g-common/
-              git clone https://github.com/pstglia/android_device_samsung_scx35g-common --single-branch device/samsung/scx35g-common
-              repo init -u https://github.com/Halium/android -b halium-7.1 --depth=1
-              repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
-              cd device/samsung/core33g
-              ls
+              repo init -u https://github.com/crdroidandroid/android -b 7.1 --depth=1
+              repo sync -c -j4  --force-sync --no-clone-bundle --no-tags
+              git clone https://github.com/LineageOS/android_external_stlport.git -b cm-14.1 --depth=1 --single-branch external/stlport
+              git clone https://github.com/LineageOS/android_packages_apps_SamsungServiceMode.git -b cm-14.1 --depth=1 --single-branch packages/apps/SamsungServiceMode
+              git clone https://github.com/pstglia/android_device_samsung_sprd-common.git -b cm-14.1 --depth=1 --single-branch device/samsung/sprd-common
+              git clone https://github.com/pstglia/android_device_samsung_scx30g-common.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch device/samsung/scx30g-common
+              git clone https://github.com/pstglia/android_device_samsung_scx35-common.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch device/samsung/scx35-common
+              git clone https://github.com/pstglia/android_device_samsung_core33g.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch device/samsung/core33g
+              git clone https://github.com/pstglia/android_hardware_sprd.git -b cm-14.1 --depth=1 --single-branch hardware/sprd
+              git clone https://github.com/LineageOS/android_hardware_samsung.git -b cm-14.1 --depth=1 --single-branch hardware/samsung
+              git clone https://github.com/pstglia/linux.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch kernel/samsung/core33g
+              git clone https://github.com/pstglia/linux.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch kernel/samsung/core33g
+              git clone https://github.com/pstglia/android_vendor_samsung_core33g.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch vendor/samsung/core33g
+              git clone https://github.com/pstglia/android_vendor_samsung_scx30g-common.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch vendor/samsung/scx30g-common
 
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh && breakfast $DEVICE && mka bootimg
-              zip halium.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/*img*
+              . build/envsetup.sh && lunch core33g && brunch core33g
               ls
               
        - name: Save
          uses: actions/upload-artifact@v2
          with:
             name: recovery.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/core33g/*img*
+            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/
             retention-days: 31
           
        - name: Release recovery
