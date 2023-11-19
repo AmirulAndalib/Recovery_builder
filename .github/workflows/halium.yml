@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  MANIFEST: https://github.com/crdroidandroid/android -b 7.1 
+  MANIFEST: https://github.com/Halium/android -b halium-7.1 --depth=1 -b 7.1 
   DEVICE: core33g
   DT_LINK: https://github.com/Hasajapathirana/android_device_samsung_core33g
   DT_PATH: device/samsung/core33g
@@ -40,8 +40,8 @@ jobs:
          run: |
               mkdir work
               cd work
-              repo init -u https://github.com/crdroidandroid/android -b 7.1 --depth=1
-              repo sync -c -j4 
+              repo init -u https://github.com/Halium/android -b halium-7.1 --depth=1 
+              repo sync -c -j 16
               git clone https://github.com/LineageOS/android_external_stlport.git -b cm-14.1 --depth=1 --single-branch external/stlport
               git clone https://github.com/LineageOS/android_packages_apps_SamsungServiceMode.git -b cm-14.1 --depth=1 --single-branch packages/apps/SamsungServiceMode
               git clone https://github.com/pstglia/android_device_samsung_sprd-common.git -b cm-14.1 --depth=1 --single-branch device/samsung/sprd-common
@@ -58,13 +58,13 @@ jobs:
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh && lunch core33g && brunch core33g
+              source build/envsetup.sh && breakfast core33g && mka systemimage
               ls
               
        - name: Save
          uses: actions/upload-artifact@v2
          with:
-            name: recovery.zip
+            name: system.zip
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/
             retention-days: 31
           
