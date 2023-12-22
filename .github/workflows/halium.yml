@@ -40,8 +40,8 @@ jobs:
          run: |
               mkdir work
               cd work
-              repo init -u https://github.com/Halium/android -b halium-7.1 --depth=1 
-              repo sync -c -j 16
+              repo init -u https://github.com/LineageOS/android.git -b lineage-15.1 --depth=1
+              repo sync -c -j 8
               git clone https://github.com/LineageOS/android_packages_apps_SamsungServiceMode.git -b cm-14.1 --depth=1 --single-branch packages/apps/SamsungServiceMode
               git clone https://github.com/pstglia/android_device_samsung_sprd-common.git -b cm-14.1 --depth=1 --single-branch device/samsung/sprd-common
               git clone https://github.com/pstglia/android_device_samsung_scx30g-common.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch device/samsung/scx30g-common
@@ -57,7 +57,9 @@ jobs:
        - name: Build
          run: |
               cd work
-              source build/envsetup.sh && breakfast core33g && mka systemimage
+              source build/envsetup.sh 
+              breakfast core33g 
+              export ALLOW_MISSING_DEPENDENCIES=TRUE
               ls
               
        - name: Save
@@ -67,14 +69,7 @@ jobs:
             path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/
             retention-days: 31
           
-       - name: Release recovery
-         uses: softprops/action-gh-release@v1
-         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         with:
-          tag_name: ${{ github.run_id }}
-          name:  halium For core33g (Unofficial) bootimg test
-          files: /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/core33g/*img*
+
 
 
 
