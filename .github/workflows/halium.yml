@@ -56,9 +56,7 @@ jobs:
        - name: Build
          run: |
               cd work
-              source build/envsetup.sh 
-              breakfast core33g 
-              export ALLOW_MISSING_DEPENDENCIES=TRUE
+              source build/envsetup.sh && breakfast core33g
               brunch core33g
               ls
               
