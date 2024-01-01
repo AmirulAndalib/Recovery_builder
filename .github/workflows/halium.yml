@@ -1,4 +1,4 @@
-name: Building crdroid
+name: Building UB
 
 on:
 #  release:
@@ -40,7 +40,7 @@ jobs:
          run: |
               mkdir work
               cd work
-              repo init -u https://github.com/Hasajapathirana/android -b 7.1 --depth=1
+              repo init -u https://github.com/Halium/android -b halium-7.1 --depth=1 -b 7.1 
               repo sync -c -j 8
               git clone https://github.com/LineageOS/android_packages_apps_SamsungServiceMode.git -b cm-14.1 --depth=1 --single-branch packages/apps/SamsungServiceMode
               git clone https://github.com/pstglia/android_device_samsung_sprd-common.git -b cm-14.1 --depth=1 --single-branch device/samsung/sprd-common
