@@ -40,26 +40,22 @@ jobs:
          run: |
               mkdir work
               cd work
-              repo init -u https://gitlab.e.foundation/e/os/android.git -b v1-nougat --depth=1
+              repo init -u https://github.com/LineageOS/android.git -b lineage-15.1 --depth=1
               repo sync -j4
-              git clone https://github.com/LineageOS/android_packages_apps_SamsungServiceMode.git -b cm-14.1 --depth=1 --single-branch packages/apps/SamsungServiceMode
-              git clone https://github.com/pstglia/android_device_samsung_sprd-common.git -b cm-14.1 --depth=1 --single-branch device/samsung/sprd-common
-              git clone https://github.com/pstglia/android_device_samsung_scx30g-common.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch device/samsung/scx30g-common
-              git clone https://github.com/pstglia/android_device_samsung_scx35-common.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch device/samsung/scx35-common
-              git clone https://github.com/Hasajapathirana/android_device_samsung_core33g.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch device/samsung/core33g
-              git clone https://github.com/pstglia/android_hardware_sprd.git -b cm-14.1 --depth=1 --single-branch hardware/sprd
-              git clone https://github.com/LineageOS/android_hardware_samsung.git -b cm-14.1 --depth=1 --single-branch hardware/samsung
-              git clone https://github.com/pstglia/linux.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch kernel/samsung/core33g
-              git clone https://github.com/pstglia/android_vendor_samsung_core33g.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch vendor/samsung/core33g
-              git clone https://github.com/pstglia/android_vendor_samsung_scx30g-common.git -b T113NU_COM_A_MAO_NO_BOLSO --depth=1 --single-branch vendor/samsung/scx30g-common
-
+              git clone --depth=1 -b lineageos-15.1 https://github.com/Hasajapathirana/android_device_samsung_goyavewifi.git device/samsung/goyavewifi
+              git clone --depth=1 -b T113NU_COM_A_MAO_NO_BOLSO https://github.com/pstglia/linux.git kernel/samsung/core33g
+              git clone --depth=1 -b lineageos-15.1 https://github.com/Hasajapathirana/android_vendor_samsung_goyavewifi.git vendor/samsung/goyavewifi              git clone --depth=1 https://github.com/gtel3g/android_device_samsung_scx30g-common.git device/samsung/scx30g-common -b lineage-15.1-gtel3g
+              git clone --depth=1 https://github.com/gtel3g/android_vendor_samsung_scx30g-common.git vendor/samsung/scx30g-common -b lineage-15.1
+              git clone --depth=1 https://github.com/LineageOS/android_external_stlport.git external/stlport -b lineage-15.1
+              git clone --depth=1 https://github.com/gtel3g/android_device_samsung_sprd-common.git device/samsung/sprd-common -b lineage-15.1
+              git clone --depth=1 https://github.com/gtel3g/android_device_samsung_scx35-common.git device/samsung/scx35-common -b lineage-15.1
+              git clone --depth=1 https://github.com/gtel3g/android_hardware_sprd.git hardware/sprd -b lineage-15.1
+              git clone --depth=1 https://github.com/LineageOS/android_packages_resources_devicesettings.git packages/resources/devicesettings -b lineage-15.1
        - name: Build
          run: |
               cd work
-              source build/envsetup.sh && breakfast core33g
-              export ANDROID_JACK_VM_ARGS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4G"
-              croot
-              brunch core33g
+              source build/envsetup.sh && breakfast goyavewifi-eng
+              brunch goyavewifi
               ls
               
        - name: Save
