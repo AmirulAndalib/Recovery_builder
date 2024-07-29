@@ -1,4 +1,4 @@
-name: Building \E\ OS
+name: Building lineage-15.1 
 
 on:
 #  release:
@@ -41,7 +41,7 @@ jobs:
               mkdir work
               cd work
               repo init -u https://github.com/LineageOS/android.git -b lineage-15.1 --depth=1
-              repo sync -j4
+              repo sync -j16
               git clone --depth=1 -b lineageos-15.1 https://github.com/Hasajapathirana/android_device_samsung_goyavewifi.git device/samsung/goyavewifi
               git clone --depth=1 -b T113NU_COM_A_MAO_NO_BOLSO https://github.com/pstglia/linux.git kernel/samsung/core33g
               git clone --depth=1 -b lineageos-15.1 https://github.com/Hasajapathirana/android_vendor_samsung_goyavewifi.git vendor/samsung/goyavewifi              git clone --depth=1 https://github.com/gtel3g/android_device_samsung_scx30g-common.git device/samsung/scx30g-common -b lineage-15.1-gtel3g
