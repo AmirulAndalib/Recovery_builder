@@ -54,7 +54,8 @@ jobs:
        - name: Build
          run: |
               cd work
-              source build/envsetup.sh && breakfast goyavewifi-eng
+              source build/envsetup.sh && breakfast goyavewifi
+              croot
               brunch goyavewifi
               ls
               
@@ -62,7 +63,9 @@ jobs:
          uses: actions/upload-artifact@v2
          with:
             name: system.zip
-            path: /home/runner/work/Recovery_builder/Recovery_builder/work/out/
+            path: |
+             /home/runner/work/Recovery_builder/Recovery_builder/work/out/*lineage-15.1 *.zip
+             /home/runner/work/Recovery_builder/Recovery_builder/work/out/recovery.img
             retention-days: 31
           
 
